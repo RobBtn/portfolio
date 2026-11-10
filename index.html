@@ -363,7 +363,7 @@ async function start() {
     const box = (parent, w, h, d, m, x = 0, y = 0, z = 0) => part(parent, G_BOX, m, x, y, z, w, h, d);
     box(hero, 0.5, 0.66, 0.28, M_TOP, 0, 0.37, 0);                      // buste
     box(hero, 0.44, 0.12, 0.27, M_LEG, 0, 0.0, 0);                      // bassin
-    J.head = joint(hero, 0, 0.74, 0); J.head.scale.setScalar(1.18);       // tête un peu plus grande : plus sympathique
+    J.head = joint(hero, 0, 0.74, 0); J.head.scale.setScalar(1.04);
     box(J.head, 0.1, 0.08, 0.1, M_SKIN, 0, 0.0, 0);
     box(J.head, 0.34, 0.34, 0.32, M_SKIN, 0, 0.2, 0);
     const R = rng(5);                                                   // grosse tignasse bouclée, châtain
@@ -378,17 +378,15 @@ async function start() {
     }
     for (let i = 0; i < 6; i++) { const sz = 0.06 + R() * 0.04; box(J.head, sz, sz, sz, M_HAIR, -0.14 + i * 0.056, 0.345 + R() * 0.025, 0.15 + R() * 0.02).rotation.set(R() * 3, R() * 3, R() * 3); }   // boucles sur le front
     for (const sx of [-1, 1]) {
-      box(J.head, 0.034, 0.04, 0.02, M_DARK, sx * 0.08, 0.232, 0.162);                 // yeux
-      box(J.head, 0.07, 0.014, 0.02, M_HAIR, sx * 0.08, 0.315, 0.163).rotation.z = sx * -0.14;   // sourcils relevés
-      box(J.head, 0.05, 0.03, 0.01, M_BLUSH, sx * 0.115, 0.15, 0.161);                 // joues
+      box(J.head, 0.03, 0.022, 0.02, M_DARK, sx * 0.08, 0.232, 0.162);                 // yeux
+      box(J.head, 0.085, 0.018, 0.02, M_HAIR, sx * 0.08, 0.305, 0.163).rotation.z = sx * 0.06;   // sourcils droits
       // lunettes fines
       box(J.head, 0.115, 0.012, 0.012, M_DARK, sx * 0.08, 0.283, 0.172); box(J.head, 0.115, 0.012, 0.012, M_DARK, sx * 0.08, 0.183, 0.172);
       box(J.head, 0.012, 0.112, 0.012, M_DARK, sx * 0.028, 0.233, 0.172); box(J.head, 0.012, 0.112, 0.012, M_DARK, sx * 0.132, 0.233, 0.172);
       box(J.head, 0.012, 0.012, 0.15, M_DARK, sx * 0.172, 0.24, 0.1);
-      box(J.head, 0.022, 0.016, 0.012, M_DARK, sx * 0.058, 0.118, 0.162).rotation.z = sx * 0.5;   // coins du sourire
     }
     box(J.head, 0.056, 0.012, 0.012, M_DARK, 0, 0.24, 0.172);                          // pont des lunettes
-    box(J.head, 0.1, 0.016, 0.012, M_DARK, 0, 0.108, 0.162);                           // sourire
+    box(J.head, 0.075, 0.014, 0.012, M_DARK, 0.006, 0.105, 0.162).rotation.z = 0.05;   // bouche, à peine un sourire en coin
     box(J.head, 0.03, 0.04, 0.03, M_SKIN, 0, 0.175, 0.17);                             // nez
     for (const [k, sx] of [['P', 1], ['N', -1]]) {
       J['s' + k] = joint(hero, sx * 0.32, 0.64, 0);
